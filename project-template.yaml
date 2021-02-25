@@ -30,30 +30,23 @@ objects:
     kind: User
     name: ${PROJECT_ADMIN_USER}
 - apiVersion: v1
-  kind: "LimitRange"
-  metadata:
-    name: ${PROJECT_NAME}-limits
-  spec:
-    limits:
-      - type: "Container"
-        default:
-          cpu: "1" 
-          memory: "1Gi" 
-        defaultRequest:
-          cpu: "500m" 
-          memory: "500Mi"
-- apiVersion: v1
   kind: ResourceQuota
   metadata:
     name: ${PROJECT_NAME}-quota
   spec:
     hard:
-      pods: "10" 
-      requests.cpu: "4" 
-      requests.memory: 8Gi 
-      limits.cpu: "6" 
-      limits.memory: 16Gi
-      requests.storage: "20G"
+      cpu: 3
+      memory: 10G
+- apiVersion: v1
+  kind: LimitRange
+  metadata:
+    name: ${PROJECT_NAME}-limits
+  spec:
+    limits:
+      - type: Container
+        defaultRequest:
+          cpu: 30m
+          memory: 30M
 parameters:
 - name: PROJECT_NAME
 - name: PROJECT_DISPLAYNAME
