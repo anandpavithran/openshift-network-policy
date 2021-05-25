@@ -1,0 +1,74 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2021-05-25T04:49:25Z"
+    labels:
+      app: test1
+      app.kubernetes.io/component: test1
+      app.kubernetes.io/instance: test1
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/generated-by: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+        f:spec:
+          f:externalIPs: {}
+          f:externalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:nodePort: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:deploymentconfig: {}
+          f:sessionAffinity: {}
+          f:type: {}
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: oc
+      operation: Update
+      time: "2021-05-25T04:54:08Z"
+    name: test1
+    namespace: test100
+    resourceVersion: "331102"
+    selfLink: /api/v1/namespaces/test100/services/test1
+    uid: 4191ea24-1fff-4248-902c-0a2589e04e81
+  spec:
+    clusterIP: 172.30.170.50
+    externalIPs:
+    - 192.168.50.10
+    externalTrafficPolicy: Cluster
+    ports:
+    - name: 8080-tcp
+      nodePort: 31903
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: test1
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
