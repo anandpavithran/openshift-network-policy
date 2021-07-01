@@ -1,0 +1,28 @@
+oc edit networks.operator.openshift.io cluster
+
+
+
+spec:
+  additionalNetworks:
+  - name: multus1
+rawCNIConfig: '{ "cniVersion": "0.3.1", "type": "bridge", "master": "eth1", "ipam":
+   { "type": "static", "addresses": [ { "address": "191.168.1.1/24" } ] } }'
+type: Raw
+
+Create a pod as below
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example
+  labels:
+app: hello-openshift
+  namespace: default
+  annotations:
+k8s.v1.cni.cncf.io/networks: multus1
+spec:
+  containers:
+- name: hello-openshift
+   image: openshift/hello-openshift
+   ports:
+     - containerPort: 8080
