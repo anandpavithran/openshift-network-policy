@@ -5,15 +5,17 @@ metadata:
 spec:
   podSelector:
    matchLabels:
-     deployment: product-catalog
+     deployment: test1
   ingress:
   - from:
     - namespaceSelector:
         matchLabels:
-          name: network-2
+          room: test200
       podSelector:
         matchLabels:
-          role: qa
+          deployment: test2
     ports:
     - port: 8080
       protocol: TCP
+
+#allow incoming coonection only to pod with label  deployment=test1 from project with label room=test2 AND pod with label deployment=test2 only through the port 8080
